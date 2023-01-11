@@ -10,6 +10,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.sql.Timestamp;
+import java.util.List;
+
 @NoArgsConstructor
 @Getter
 @Setter
@@ -30,12 +32,13 @@ public class Address {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="address_id",nullable=false)
     private Long address_id;
-    @OneToOne(cascade=CascadeType.ALL)
-    private Zones zones;
+    @OneToMany(mappedBy="zone_id",cascade = CascadeType.ALL)
+
+    private List<Zones> zones;
 
 
 
-    @OneToOne(cascade=CascadeType.ALL)
+    @ManyToOne
     private Way_type way_type;
 
 
@@ -43,12 +46,11 @@ public class Address {
     private String way_main;
     @Column(name="way_secondary",nullable=false)
     private String way_secondary;
-    @Column(name="building",nullable=false)
-    private String building;
+
 
     @OneToOne(cascade=CascadeType.ALL)
     private Place_type place_type;
-    @OneToOne()
+    @OneToOne(cascade=CascadeType.ALL)
     private Building_type building_type;
 
     @Column(name="place",nullable=false)
@@ -67,22 +69,21 @@ public class Address {
     @UpdateTimestamp()
     @Column(name="date_update",nullable=true)
     private Timestamp date_update;
+
     @Column(name="date_delete",nullable=true)
     private Timestamp date_delete;
     //Constructor
 
-
-    public Address(Long address_id, Zones zones, String addr_txt, Way_type way_type, String way_main, String way_secondary, String building, Place_type place_type, Building_type building_type, String place, Float latitude, Float longitude, boolean active, Timestamp date_created, Timestamp date_update, Timestamp date_delete) {
+    public Address(Long address_id, List<Zones> zones, Way_type way_type, String way_main, String way_secondary, Place_type place_type, Building_type building_type, String place, String addr_txt, Float latitude, Float longitude, boolean active, Timestamp date_created, Timestamp date_update, Timestamp date_delete) {
         this.address_id = address_id;
         this.zones = zones;
-        this.addr_txt = addr_txt;
         this.way_type = way_type;
         this.way_main = way_main;
         this.way_secondary = way_secondary;
-        this.building = building;
         this.place_type = place_type;
         this.building_type = building_type;
         this.place = place;
+        this.addr_txt = addr_txt;
         this.latitude = latitude;
         this.longitude = longitude;
         this.active = active;
@@ -90,7 +91,10 @@ public class Address {
         this.date_update = date_update;
         this.date_delete = date_delete;
     }
+
+
     //generacion de getters y setters
+
 
     public Long getAddress_id() {
         return address_id;
@@ -100,20 +104,12 @@ public class Address {
         this.address_id = address_id;
     }
 
-    public Zones getZones() {
+    public List<Zones> getZones() {
         return zones;
     }
 
-    public void setZones(Zones zones) {
+    public void setZones(List<Zones> zones) {
         this.zones = zones;
-    }
-
-    public String getAddr_txt() {
-        return addr_txt;
-    }
-
-    public void setAddr_txt(String addr_txt) {
-        this.addr_txt = addr_txt;
     }
 
     public Way_type getWay_type() {
@@ -140,14 +136,6 @@ public class Address {
         this.way_secondary = way_secondary;
     }
 
-    public String getBuilding() {
-        return building;
-    }
-
-    public void setBuilding(String building) {
-        this.building = building;
-    }
-
     public Place_type getPlace_type() {
         return place_type;
     }
@@ -170,6 +158,14 @@ public class Address {
 
     public void setPlace(String place) {
         this.place = place;
+    }
+
+    public String getAddr_txt() {
+        return addr_txt;
+    }
+
+    public void setAddr_txt(String addr_txt) {
+        this.addr_txt = addr_txt;
     }
 
     public Float getLatitude() {

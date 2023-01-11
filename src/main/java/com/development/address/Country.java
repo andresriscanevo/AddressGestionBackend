@@ -42,9 +42,83 @@ public class Country {
     @UpdateTimestamp()
     @Column(name="date_update",nullable=true)
     private Timestamp date_update;
+
     @Column(name="date_delete",nullable=true)
     private Timestamp date_delete;
 
+    public Country(Long country_id, String country_name, String country_code, boolean active, List<Regions> regionss, Timestamp date_created, Timestamp date_update, Timestamp date_delete) {
+        this.country_id = country_id;
+        this.country_name = country_name;
+        this.country_code = country_code;
+        this.active = active;
+        this.regionss = regionss;
+        this.date_created = date_created;
+        this.date_update = date_update;
+        this.date_delete = date_delete;
+    }
 
+    public Long getCountry_id() {
+        return country_id;
+    }
+
+    public void setCountry_id(Long country_id) {
+        this.country_id = country_id;
+    }
+
+    public String getCountry_name() {
+        return country_name;
+    }
+
+    public void setCountry_name(String country_name) {
+        this.country_name = country_name;
+    }
+
+    public String getCountry_code() {
+        return country_code;
+    }
+
+    public void setCountry_code(String country_code) {
+        this.country_code = country_code;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public List<Regions> getRegionss() {
+        return regionss;
+    }
+
+    public void setRegionss(List<Regions> regionss) {
+        this.regionss = regionss;
+    }
+
+    public Timestamp getDate_created() {
+        return date_created;
+    }
+
+    public void setDate_created(Timestamp date_created) {
+        this.date_created = date_created;
+    }
+
+    public Timestamp getDate_update() {
+        return date_update;
+    }
+
+    public void setDate_update(Timestamp date_update) {
+        this.date_update = date_update;
+    }
+
+    public Timestamp getDate_delete() {
+        return date_delete;
+    }
+
+    public void setDate_delete(Timestamp date_delete) {
+        this.date_delete = date_delete;
+    }
 }
 

@@ -9,6 +9,8 @@ import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.sql.Timestamp;
+import java.util.List;
+
 @NoArgsConstructor
 @Setter
 @Getter
@@ -41,14 +43,15 @@ public class Way_type {
     @UpdateTimestamp()
     @Column(name="date_update",nullable=true)
     private Timestamp date_update;
+
     @Column(name="date_delete",nullable=true)
     private Timestamp date_delete;
     @Column(name="timestamp",nullable=true)
     private Timestamp timestamp;
-    @OneToOne(mappedBy="way_type")
-    private Address address;
+    @OneToMany(mappedBy="way_type")
+    private List<Address> address;
 
-    public Way_type(Long way_type_id, String way_type_name, String way_type_code, boolean active, Timestamp date_created, Timestamp date_update, Timestamp date_delete, Timestamp timestamp, Address address) {
+    public Way_type(Long way_type_id, String way_type_name, String way_type_code, boolean active, Timestamp date_created, Timestamp date_update, Timestamp date_delete, Timestamp timestamp, List<Address> address) {
         this.way_type_id = way_type_id;
         this.way_type_name = way_type_name;
         this.way_type_code = way_type_code;

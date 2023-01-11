@@ -16,9 +16,8 @@ public class AddressDTO {
     private String way_main;
     @JsonProperty("way_secondary")
     private String way_secondary;
-    //private Building_TypeDTO building_type;
-    @JsonProperty("building")
-    private String building;
+    private Building_TypeDTO building_type;
+
     private Place_TypeDTO place_type;
     @JsonProperty("place_name")
     private String place;
@@ -29,6 +28,7 @@ public class AddressDTO {
     @JsonProperty("longitude")
     private float longitude;
     private CountryDTO country;
+
 
     private boolean active=Boolean.FALSE;
 

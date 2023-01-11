@@ -26,10 +26,13 @@ public interface MapStructMapper {
     Building_type building_typeDTOToBuilding_Type(Building_TypeDTO building_typeDTO);
 
     City cityDTOToCity(CityDTO cityDTO);
+    List<CityDTO> CityToCityAllDTO(List<City> cityList);
     Country countryDTOToCountry(CountryDTO countryDTO);
     CountryDTO CountryTocountryDTO(Country country);
     Place_type place_typeDTOToPlace_Type(Place_TypeDTO place_typeDTO);
     Way_type way_typeDTOToWay_Type(Way_TypeDTO way_typeDTO);
+    RegionsDTO RegionsToregionsDTO(Regions regions);
+    List<RegionsDTO> RegionsToRegionsAllDTO(List<Regions> regionsList);
     Regions regionsDTOToRegions(RegionsDTO regionsDTO);
     Services servicesDTOToServices(ServicesDTO servicesDTO);
     Zones zonesDTOToZones(ZonesDTO zonesDTO);

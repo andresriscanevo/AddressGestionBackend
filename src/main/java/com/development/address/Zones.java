@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.sql.Timestamp;
@@ -29,7 +30,7 @@ public class Zones {
     @NonNull
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long zone_id;
-    @ManyToOne()
+    @ManyToOne(cascade = CascadeType.ALL)
     private City city;
     @Column(name="zone_name",nullable=false)
     private String zone_name;
@@ -39,7 +40,9 @@ public class Zones {
     private Timestamp date_created;
     @UpdateTimestamp()
     private Timestamp date_update;
-    @OneToOne(mappedBy="zones")
+
+    @ManyToOne
+    @JoinColumn(name="address_id")
     private Address address;
     private Timestamp zoness;
     @ManyToMany(mappedBy="zoness")

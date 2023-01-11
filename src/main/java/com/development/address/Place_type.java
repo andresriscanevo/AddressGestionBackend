@@ -42,6 +42,7 @@ public class Place_type {
     @UpdateTimestamp()
     @Column(name="date_update",nullable=true)
     private Timestamp date_update;
+
     @Column(name="date_delete",nullable=true)
     private Timestamp date_delete;
     @Column(name="timestamp",nullable=true)

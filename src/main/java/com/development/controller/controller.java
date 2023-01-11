@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
-
+//Controlador de prueba para el servicio base del requerimiento 03
 @RestController
 @RequestMapping(value="/address")
 @CrossOrigin(origins="http://localhost:4200/")
